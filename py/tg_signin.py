@@ -5,8 +5,15 @@ import os
 import re
 import time
 
+# 修改jcode所在目录，如果为空则使用py脚本所在目录的jdcode.txt文件
+log_dir="/home/xxx/app/jd/log/jcode/"
+
+# 填入my.telegram.org中得到的api_id和api_hash
+api_id = 1234 
+api_hash = 'abcd'
+
 class TuringLabBotCMD:
-    get_all_activities = "/get_all_activities"
+    get_all_activities = "/get_activities_status"
     submit_activity_codes = "/submit_activity_codes"
 
 class CommitBotCMD:
@@ -43,19 +50,15 @@ TuringLabBot_JDC = {"bean":"Bean",              # 种豆得豆
 '''
 CommitBot_JDC = {"jdzz":"Jdzz",              # 京东赚赚
                  "jdcrazyjoy":"Joy",         # 东东农场
-                 "jdcash":"",             # 签到领现金
+                 "jdcash":"",                # 签到领现金
                 }
 
 g_log_JDcodeName = ["Bean","DreamFactory","JdFactory","Jdzz",
                     "Cfd","Health","Joy","BookShop",
                     "Sgmh","Pet","Fruit"]
 
-# Remember to use your own values from my.telegram.org!
-api_id = 1234 
-api_hash = 'abcd'
-client = TelegramClient('tg_signin', api_id, api_hash)
 
-log_dir="/home/xxx/app/jd/log/jcode/"
+client = TelegramClient('tg_signin', api_id, api_hash)
 
 def get_last_JDcode_file_name(log_dir = ""):
     file_name = ""
@@ -88,23 +91,23 @@ def merge_dict(dic_list):
     for _ in dic_list:
         for k, v in _.items():
             dic.setdefault(k, []).append(v)
-    #print([{k:v} for k, v in dic.items()])
+    # print([{k:v} for k, v in dic.items()])
     return dic
     
 
 async def main(sen_to_chat_tlb, sen_to_chat_cb):
 
-    #await client.send_message('xxx', 'Testing Telethon!')
+    # await client.send_message('xxx', 'Testing Telethon!')
     time.sleep(31)
 
     for msg in sen_to_chat_tlb:
         username = 'TuringLabbot'
         await client.send_message(username, msg)
-        #time.sleep(0.7)
+        # time.sleep(0.7)
     for msg in sen_to_chat_cb:
         username = 'LvanLamCommitCodeBot'
         await client.send_message(username, msg)
-        #time.sleep(0.3)
+        # time.sleep(0.3)
     await client.send_message('TuringLabbot',TuringLabBotCMD.get_all_activities)
     await client.send_message('LvanLamCommitCodeBot',CommitBotCMD.get_all_activities)
 
