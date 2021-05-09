@@ -79,7 +79,7 @@ if __name__ == "__main__":
                 continue
             chat_prefix += code.rstrip('\n')
 
-        sen_to_chat_pb.append(chat_prefix.rstrip(','))
+        sen_to_chat_pb.append(chat_prefix)
 
     print(sen_to_chat_pb)
     with client:
