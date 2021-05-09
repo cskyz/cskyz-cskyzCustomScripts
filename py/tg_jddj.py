@@ -40,7 +40,7 @@ def make_bot_JDcode(dict_in):
             for key, value in dict_in.items():
                 if  not value :
                     continue
-                match_rule = r'JD_(.*)\,JD_(.*)\,'
+                match_rule = r'(JD|WX)_(.*)\,'
                 match_obj = re.match(match_rule, line)
                 if match_obj:
                     code_dict = {key : line}
