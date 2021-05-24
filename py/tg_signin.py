@@ -40,7 +40,9 @@ TuringLabBot_JDC = {"bean":"Bean",              # 种豆得豆
                     "jxfactory":"DreamFactory", # 京喜工厂
                     "sgmh":"Sgmh",              #闪购盲盒
                     "jxcfd":"Cfd",              # 京喜财富岛
-                    "health":"Health"           # 东东健康社区
+                    "health":"Health",          # 东东健康社区
+                    "carnivalcity":"Carni",
+                    "city":"City"
                     }
 
 '''
@@ -55,7 +57,7 @@ CommitBot_JDC = {"jdzz":"Jdzz",              # 京东赚赚
 
 g_log_JDcodeName = ["Bean","DreamFactory","JdFactory","Jdzz",
                     "Cfd","Health","Joy","BookShop",
-                    "Sgmh","Pet","Fruit"]
+                    "Sgmh","Pet","Fruit","Carni","City"]
 
 
 client = TelegramClient('tg_signin', api_id, api_hash)
